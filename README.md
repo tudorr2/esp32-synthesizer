@@ -10,7 +10,7 @@
 
 ---
 
-## ◈ What is this?
+## ◈
 
 It's a tiny standalone synthesizer built from scratch on a handmade PCB, housed in a 3D-printed PLA enclosure. It generates polyphonic sawtooth wave audio through a low-pass filter with 3-voice detuning — all in real-time on the ESP32's DAC output, amplified through a PAM8403 into a 3mm speaker.
 
@@ -72,30 +72,6 @@ With transpose active, each loop of the pattern shifts up by one octave (12 semi
 
 ---
 
-## ◈ Sound Engine
-
-The synth runs fully inside an `esp_timer` ISR firing at **44,100 Hz** — one sample per tick.
-
-### Waveform
-A **512-point sawtooth wave** is pre-computed at startup and stored in flash. The classic buzzy, harmonics-rich waveform.
-
-### 3-Voice Polyphony (Chorus Detuning)
-Three oscillators run simultaneously, each detuned by **+0.7% per voice**:
-This creates a natural chorus / ensemble thickness without any DSP complexity.
-
-### Low-Pass Filter
-Each voice has its own **1-pole IIR low-pass filter**:
-```cpp
-lpf_out += cutoff × (sample − lpf_out)
-```
-The cutoff is key-tracked: higher notes get a brighter filter, lower notes roll off more. Keeps the sound consistent across the full pitch range.
-
-### Amplitude Envelope
-- **Attack:** 10ms fade-in (snappy, no click)
-- **Release:** 300ms fade-out (smooth tail on note-off)
-
----
-
 ## ◈ Patterns
 
 15 patterns, each 4 steps long. Intervals are in semitones from the root:
@@ -124,11 +100,6 @@ The cutoff is key-tracked: higher notes get a brighter filter, lower notes roll 
 
 The project is split into two files:
 
-- **`main.cpp`** — Hardware setup, ISR audio engine, knob/button polling, pin definitions
-- **`lib.h`** — The `Motif` class: pattern sequencer, BPM timing, transpose logic, note on/off callbacks
-
-The original arpeggiator concept was written in Python (for use with Mozzi on Arduino). I ported and rewrote it in C++ for the ESP32 ecosystem:
-
 - Replaced Mozzi's audio scheduler with `esp_timer` periodic ISR at 44.1kHz
 - Rewrote all note/timing logic in fixed-step float arithmetic (no dynamic allocation)
 - Added 3-voice detuned oscillator chorus (not in the original)
@@ -156,13 +127,6 @@ The original arpeggiator concept was written in Python (for use with Mozzi on Ar
 
 <!-- ![Case Render](photos/case_render.jpg) -->
 <!-- ![Case Assembly](photos/case_assembly.jpg) -->
-
-The enclosure was designed to fit the handmade PCB with cutouts for:
-- The two potentiometers (top panel)
-- Two tactile buttons (top panel)
-- Slide switch (side panel)
-- Speaker grille (front face)
-- USB access for flashing (side panel)
 
 ---
 
