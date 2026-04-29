@@ -12,7 +12,7 @@
 
 ## ◈ What is this?
 
-It's a tiny standalone arpeggiator synthesizer built from scratch on a handmade PCB, housed in a 3D-printed PLA enclosure. It generates polyphonic sawtooth wave audio through a low-pass filter with 3-voice detuning — all in real-time on the ESP32's DAC output, amplified through a PAM8403 into a 3mm speaker.
+It's a tiny standalone synthesizer built from scratch on a handmade PCB, housed in a 3D-printed PLA enclosure. It generates polyphonic sawtooth wave audio through a low-pass filter with 3-voice detuning — all in real-time on the ESP32's DAC output, amplified through a PAM8403 into a 3mm speaker.
 
 No synth shield. No MIDI interface. Just raw waveform math and a handful of components.
 
