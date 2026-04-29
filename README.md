@@ -96,16 +96,14 @@ With transpose active, each loop of the pattern shifts up by one octave (12 semi
 
 ---
 
-## ◈ Code Notes
+## ◈ Code
 
 The project is split into two files:
 
 - Replaced Mozzi's audio scheduler with `esp_timer` periodic ISR at 44.1kHz
-- Rewrote all note/timing logic in fixed-step float arithmetic (no dynamic allocation)
-- Added 3-voice detuned oscillator chorus (not in the original)
+- Rewrote all note/timing logic in fixed-step float arithmetic
+- Added 3-voice detuned oscillator chorus
 - Reworked the arpeggio/motif tables with new patterns (`glitchy`, `leap`, `new1`, `new2`, `power`, `fifth-jump`)
-- Added IIR low-pass filter with key-tracking per voice
-- Added attack/release amplitude envelope in the ISR
 
 > Full credit to **[todbot](https://github.com/todbot)** whose `mozzi_experiments` repo was the direct inspiration and starting point for the pattern sequencer architecture. This is an adaptation — most of the higher-level motif/sequencer logic structure came from his work.
 
