@@ -156,40 +156,60 @@ void setup()
   Serial.println("Ready");
 }
 
+bool lastPowerState = false; // track switch state, add this near your other globals at the top
+
 void loop()
 {
+  bool powerOn = digitalRead(POWER_SW) == LOW;
 
-  if (digitalRead(POWER_SW) == HIGH)
-    return;
-  else
+  if (!powerOn)
   {
-    bool btnA = digitalRead(PIN_BUTTON_A);
-    if (btnA == LOW && lastBtnA == HIGH && (millis() - lastBtnAms > DEBOUNCE_MS))
+    if (lastPowerState) // only runs once on the OFF transition
     {
-      motif.next_mot();
-      Serial.print("Pattern: ");
-      Serial.println(motif.mot_name());
-      lastBtnAms = millis();
+      motif.off();
+      amp_target = 0.0f;
+      dacWrite(PIN_DAC, 128);
+      digitalWrite(PIN_LED, LOW);
+      Serial.println("Standby");
     }
-    lastBtnA = btnA;
-
-    bool btnB = digitalRead(PIN_BUTTON_B);
-    if (btnB == LOW && lastBtnB == HIGH && (millis() - lastBtnBms > DEBOUNCE_MS))
-    {
-
-      int steps = (motif.trans_steps + 1) % 3;
-      motif.set_transpose(12, steps);
-      Serial.printf("Transpose Steps: %d\n", steps);
-      lastBtnBms = millis();
-    }
-    lastBtnB = btnB;
-
-    knobAval = (knobAval * KNOB_FILTER) + (1.0f - KNOB_FILTER) * analogRead(PIN_KNOB_A);
-    knobBval = (knobBval * KNOB_FILTER) + (1.0f - KNOB_FILTER) * analogRead(PIN_KNOB_B);
-
-    motif.root_note = (int)map_range(knobAval, 0, 4095, 24, 72); // low C to high C
-    motif.set_bpm(map_range(knobBval, 0, 4095, 40, 180));
-
-    motif.update();
+    lastPowerState = false;
+    return;
   }
+
+  if (!lastPowerState) // only runs once on the ON transition
+  {
+    motif.on();
+    Serial.println("Running");
+  }
+  lastPowerState = true;
+
+  // --- everything below is your original code untouched ---
+
+  bool btnA = digitalRead(PIN_BUTTON_A);
+  if (btnA == LOW && lastBtnA == HIGH && (millis() - lastBtnAms > DEBOUNCE_MS))
+  {
+    motif.next_mot();
+    Serial.print("Pattern: ");
+    Serial.println(motif.mot_name());
+    lastBtnAms = millis();
+  }
+  lastBtnA = btnA;
+
+  bool btnB = digitalRead(PIN_BUTTON_B);
+  if (btnB == LOW && lastBtnB == HIGH && (millis() - lastBtnBms > DEBOUNCE_MS))
+  {
+    int steps = (motif.trans_steps + 1) % 3;
+    motif.set_transpose(12, steps);
+    Serial.printf("Transpose Steps: %d\n", steps);
+    lastBtnBms = millis();
+  }
+  lastBtnB = btnB;
+
+  knobAval = (knobAval * KNOB_FILTER) + (1.0f - KNOB_FILTER) * analogRead(PIN_KNOB_A);
+  knobBval = (knobBval * KNOB_FILTER) + (1.0f - KNOB_FILTER) * analogRead(PIN_KNOB_B);
+
+  motif.root_note = (int)map_range(knobAval, 0, 4095, 24, 72);
+  motif.set_bpm(map_range(knobBval, 0, 4095, 40, 180));
+
+  motif.update();
 }
