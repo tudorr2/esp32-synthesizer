@@ -36,6 +36,25 @@ No synth shield. No MIDI interface. Just raw waveform math and a handful of comp
 
 ---
 
+## ◈ Photos
+
+> 📷 *Board prototype photos
+
+<!-- Add your board photos here -->
+<!-- ![Board Top View](photos/board_top.jpg) -->
+<!-- ![Board Side View](photos/board_side.jpg) -->
+
+---
+
+## ◈ 3D Printed Case
+
+> 📷 *PLA enclosure 
+
+<!-- ![Case Render](photos/case_render.jpg) -->
+<!-- ![Case Assembly](photos/case_assembly.jpg) -->
+
+---
+
 ## ◈ Pin Map
 
 ```
@@ -106,25 +125,6 @@ The project is split into two files:
 - Reworked the arpeggio/motif tables with new patterns (`glitchy`, `leap`, `new1`, `new2`, `power`, `fifth-jump`)
 
 > Full credit to **[todbot](https://github.com/todbot)** whose `mozzi_experiments` repo was the direct inspiration and starting point for the pattern sequencer architecture. This is an adaptation — most of the higher-level motif/sequencer logic structure came from his work.
-
----
-
-## ◈ Photos
-
-> 📷 *Board prototype photos
-
-<!-- Add your board photos here -->
-<!-- ![Board Top View](photos/board_top.jpg) -->
-<!-- ![Board Side View](photos/board_side.jpg) -->
-
----
-
-## ◈ 3D Printed Case
-
-> 📷 *PLA enclosure 
-
-<!-- ![Case Render](photos/case_render.jpg) -->
-<!-- ![Case Assembly](photos/case_assembly.jpg) -->
 
 ---
 
