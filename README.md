@@ -14,8 +14,6 @@
 
 It's a tiny standalone synthesizer built from scratch on a handmade PCB, housed in a 3D-printed PLA enclosure. It generates polyphonic sawtooth wave audio through a low-pass filter with 3-voice detuning — all in real-time on the ESP32's DAC output, amplified through a PAM8403 into a 3mm speaker.
 
-No synth shield. No MIDI interface. Just raw waveform math and a handful of components.
-
 > **Inspired by and adapted from** → [`todbot/mozzi_experiments`](https://github.com/todbot/mozzi_experiments)
 > The core logic and tone architecture draws heavily from todbot's work. I translated the original Python-based concepts to C++, rewired the patterns, reworked the tone arrays, and adapted the whole thing to run on the ESP32.
 
