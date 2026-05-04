@@ -47,6 +47,8 @@ It's a tiny standalone synthesizer built from scratch on a handmade PCB, housed 
 > 📷 *Board 
 <img width="2048" height="1536" alt="board" src="https://github.com/user-attachments/assets/0342725e-8157-4de1-a056-c1187f3932e8" />
 
+---
+
 >📷 *3D Model
 <img width="1041" height="726" alt="3dcase" src="https://github.com/user-attachments/assets/6d6dc07d-535e-44ec-aac9-0fdcad5a9e02" />
 
