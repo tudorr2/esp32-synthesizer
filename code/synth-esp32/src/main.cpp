@@ -155,7 +155,7 @@ void setup()
   Serial.println("Ready");
 }
 
-bool lastPowerState = false; // track switch state, add this near your other globals at the top
+bool lastPowerState = false; 
 
 void loop()
 {
@@ -163,7 +163,7 @@ void loop()
 
   if (!powerOn)
   {
-    if (lastPowerState) // only runs once on the OFF transition
+    if (lastPowerState) 
     {
       motif.off();
       amp_target = 0.0f;
@@ -175,7 +175,7 @@ void loop()
     return;
   }
 
-  if (!lastPowerState) // only runs once on the ON transition
+  if (!lastPowerState) 
   {
     motif.on();
     Serial.println("Running");
