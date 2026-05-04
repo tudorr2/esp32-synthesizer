@@ -6,8 +6,8 @@
 
 #define PIN_KNOB_A 36
 #define PIN_KNOB_B 39
-#define PIN_BUTTON_A 18 // transpose steps
-#define PIN_BUTTON_B 19 // mot pattern
+#define PIN_BUTTON_A 14 // transpose steps
+#define PIN_BUTTON_B 27 // mot pattern
 #define PIN_DAC 25
 #define PIN_LED 22
 #define POWER_SW 15
@@ -60,7 +60,6 @@ void note_on(int n)
   for (int i = 0; i < NUM_VOICES; i++)
   {
     voices[i].freq = fo * (1.0f + i * 0.007f);
-    // Key tracking for filter
     float cutoff = (fo * 8.0f) / (SAMPLE_RATE / 2.0f);
     voices[i].lpf_cutoff = constrain(cutoff, 0.05f, 0.9f);
   }
@@ -182,8 +181,6 @@ void loop()
     Serial.println("Running");
   }
   lastPowerState = true;
-
-  // --- everything below is your original code untouched ---
 
   bool btnA = digitalRead(PIN_BUTTON_A);
   if (btnA == LOW && lastBtnA == HIGH && (millis() - lastBtnAms > DEBOUNCE_MS))
