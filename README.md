@@ -36,20 +36,16 @@ It's a tiny standalone synthesizer built from scratch on a handmade PCB, housed 
 
 ## ◈ Photos
 
-> 📷 *Board prototype photos
-
-<!-- Add your board photos here -->
-<!-- ![Board Top View](photos/board_top.jpg) -->
-<!-- ![Board Side View](photos/board_side.jpg) -->
-
----
 
 ## ◈ 3D Printed Case
 
-> 📷 *PLA enclosure 
+> 📷 *PLA case 
+<img width="2048" height="1536" alt="case" src="https://github.com/user-attachments/assets/bcf08e34-6ade-45bd-853f-13ad81bfa1dd" />
 
-<!-- ![Case Render](photos/case_render.jpg) -->
-<!-- ![Case Assembly](photos/case_assembly.jpg) -->
+---
+
+> 📷 *Board 
+<img width="2048" height="1536" alt="board" src="https://github.com/user-attachments/assets/0342725e-8157-4de1-a056-c1187f3932e8" />
 
 ---
 
